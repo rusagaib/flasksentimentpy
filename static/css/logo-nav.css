@@ -1,0 +1,53 @@
+label {
+    display: block;
+    width: 200px;
+}
+
+@media (min-width: 992px) {
+/* @media (max-width: 1080px) { */
+    body {
+        padding-top: 56px;
+    }
+}
+
+.center_div{
+    margin: 0 auto;
+    width:80% /* value of your choice which suits your alignment */
+}
+
+.container-fluid{
+  padding-top: 25vh;
+}
+
+/* set form background colour*/
+form{
+	background: #fff;
+}
+
+.form-container{
+	border-radius: 10px;
+	padding: 30px;
+}
+
+/* .hero-title:hover {
+  background-image: url("{{ url_for('static', filename='resources/handsOn.gif')   }}");
+  background-image: url("/static/resources/handsOn.gif");
+  background-size: 175px 75px;
+  text-shadow: 2px 2px gray;
+} */
+
+
+/* .btn:hover {
+  background-image: url("/static/resources/handsOn.gif");
+  background-size: 175px 55px;
+  background-color: grey;
+  text-shadow: 2px 2px red;
+  color: white;
+} */
+
+.table {
+  width: 100%
+  height: 200px;
+  overflow-y: auto;
+  overflow-x: auto;
+}

@@ -1,0 +1,31 @@
+<!-- Navigation -->
+{% extends "base.html" %}
+{% block title %}Data Train & Tes{% endblock %}
+<!-- Page Content -->
+{% block content %}
+<div class="container">
+  {% include "menu_dataset.html" %}
+
+  {% if msg %}
+
+    <div class="table caption-top table-striped table-bordered table-responsive-md" cellspacing="0" width="100%" style="height: 400px; overflow-y: auto; overflow-x: auto;">
+      <caption>Dataset Train</caption>
+        {{ train|safe }}
+    </div>
+    <br>
+    <div class="table caption-top table-striped table-bordered table-responsive-md" cellspacing="0" width="100%" style="height: 400px; overflow-y: auto; overflow-x: auto;">
+      <caption>Dataset Testing</caption>
+        {{ test|safe }}
+    </div>
+
+  {% else %}
+
+  <div class="alert alert-warning" role="alert">
+    Dataset Kosong!!
+  </div>
+
+  {% endif %}
+
+</div>
+<!-- /.container -->
+{% endblock %}

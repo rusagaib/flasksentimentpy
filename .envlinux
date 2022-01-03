@@ -1,0 +1,8 @@
+SECRET_KEY = isi_terserah_atau_gunakan_random_string
+usernamenya = usernamenya
+passwordnya = passwordnya
+db_ip = localhost
+db_name = flasksentimen_db
+FLASK_ENV = development
+FILENAMES = /home/username/flasksentimentpy
+SQLALCHEMY_TRACK_MODIFICATIONS = True

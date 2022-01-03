@@ -1,0 +1,7 @@
+SECRET_KEY = isi_terserah_atau_gunakan_random_string
+usernamenya = isi_username_pada_basisdata_mysql
+passwordnya = isi_username_pada_basisdata_mysql
+db_ip = localhost
+db_name = flasksentimen_db
+FLASK_ENV = development
+FILENAMES = C:\Users\nama_usernya\flasksentimenpy

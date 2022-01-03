@@ -1,0 +1,51 @@
+{% extends "base.html" %}
+{% block title %}Login{% endblock %}
+{% block content %}
+<!-- Page Content -->
+<!-- <div class="container">
+  <h3 class="mt-5">Login</h3>
+  <form action="{{ url_for('login') }}" method="post">
+    <input type="hidden" name="csrf_token" value="{{ csrf_token() }}"/>
+    <input type="text" name="username" placeholder="Username" id="username" required>
+    <input type="password" name="password" placeholder="Password" id="password" required>
+    <input class="btn" type="submit" value="Login">
+    <div class="msg">{{ msg }}</div>
+  </form>
+</div> -->
+<div class="container-login" id="container-login">
+  <section class="container-fluid center_div">
+    <!-- row and justify-content-center class is used to place the form in center -->
+
+        <section class="row justify-content-center">
+          <section class="col-12 col-sm-6 col-md-4">
+            <div class="card">
+              <div class="card-body">
+                <form class="form-container" action="{{ url_for('login') }}" method="post">
+                  <input type="hidden" name="csrf_token" value="{{ csrf_token() }}"/>
+                  <div class="form-group">
+                    <!-- <h4 class="text-center font-weight-bold"> Login </h4> -->
+                    <h4 class="text-center font-weight-bold"> ANALISIS SENTIMEN PENGGUNA LAYANAN PROVIDER SELULER DI MASA PANDEMI PADA MEDIA SOSIAL TWITTER MENGGUNAKAN METODE NAÏVE BAYES </h4>
+                    <label for="InputEmail1">Username</label>
+                    <input type="text" name="username" class="form-control" id="username" aria-describeby="emailHelp" placeholder="Enter username" required>
+                  </div>
+                  <div class="form-group">
+                    <label for="InputPassword1">Password</label>
+                    <input type="password" name="password" class="form-control" id="password" placeholder="Password" required>
+                  </div>
+                  <div class="form-group">
+                    <button type="submit" name="submit" class="btn btn-primary btn-block" value="Login">Login</button>
+                  </div>
+                  {% if msg %}
+                  <div class="alert alert-danger" role="alert">
+                    {{ msg }}
+                  </div>
+                  {% endif %}
+                </form>
+            </div>
+          </div>
+          </section>
+        </section>
+  </section>
+</div>
+
+{% endblock %}

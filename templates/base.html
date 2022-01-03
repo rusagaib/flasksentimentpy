@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <title>{% block title %}{% endblock %} | ANALISIS SENTIMEN PENGGUNA LAYANAN PROVIDER SELULER DI MASA PANDEMI PADA MEDIA SOSIAL TWITTER MENGGUNAKAN METODE NAÏVE BAYES</title>
+    <!-- <link href="/static/css/logo-nav.css" rel="stylesheet">
+    <link href="/static/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet"> -->
+    <!-- <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='./css/logo-nav.css') }}"> -->
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='./vendor/bootstrap/css/bootstrap.min.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/style_config.css') }}">
+  </head>
+  <body>
+    <header>
+      <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+       <div class="container navbar">
+
+         {% if username %}
+
+          <a class="navbar-brand" href="#" style="pointer-events: none; cursor: default;">{{ self.title() }}</a>
+          <!-- <a class="navbar-brand" href="/dashboard">Dashboard</a> -->
+          <div class="navbar-brand">
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+             <span class="navbar-toggler-icon"></span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+            </button>
+          </div>
+          <div class="collapse navbar-collapse" id="navbarResponsive">
+            <ul class="nav navbar-nav ml-auto">
+               <a class="nav-link" href="/dashboard">Dashboard</a>
+               <a class="nav-link" href="/dataset" onclick="spinner();">Dataset</a>
+               <a class="nav-link" href="/history" onclick="spinner();">History</a>
+               <a class="nav-link" href="/about">About Us</a>
+               <a class="nav-link" href="{{ url_for('logout') }}">Logout</a>
+            </ul>
+          </div>
+
+         {% else %}
+          <!-- <a class="navbar-brand" href="/">Login</a> -->
+          <a class="navbar-brand" href="/" style="white-space: pre-wrap;">{{ self.title() }}</a>
+          <div class="navbar-brand">
+          </div>
+
+         {% endif %}
+
+       </div>
+      </nav>
+    </header>
+
+    {% block content %}{% endblock %}
+    <div class="loader">
+      <div class="loading"></div>
+    </div>
+
+  </body>
+  <!-- Bootstrap core JavaScript -->
+  <script src="{{ url_for('static', filename='vendor/jquery/jquery.min.js') }}"></script>
+  <script src="{{ url_for('static', filename='vendor/popper/popper.min.js') }}"></script>
+  <script src="{{ url_for('static', filename='vendor/bootstrap/js/bootstrap.min.js') }}"></script>
+
+  {% block script %}
+  <script type="text/javascript">
+    function spinner() {
+      document.getElementsByClassName("loader")[0].style.display = "block";
+    }
+  </script>
+  {% endblock %}
+
+</html>

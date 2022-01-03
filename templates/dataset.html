@@ -1,0 +1,31 @@
+<!-- Navigation -->
+{% extends "base.html" %}
+{% block title %}Dataset{% endblock %}
+<!-- Page Content -->
+{% block content %}
+<div class="container">
+
+  {% include "menu_dataset.html" %}
+
+  {% if msg %}
+  <div class="table caption-top table-striped table-bordered table-responsive-md" cellspacing="0" width="100%" style="height: 400px; overflow-y: auto; overflow-x: auto;">
+    <caption>Dataset Raw</caption>
+      {{ dr|safe }}
+  </div>
+  <br>
+  <div class="table caption-top table-striped table-bordered table-responsive-md" cellspacing="0" width="100%" style="height: 400px; overflow-y: auto; overflow-x: auto;">
+    <caption>Dataset hasil pre-process</caption>
+      {{ dp|safe }}
+  </div>
+
+  {% else %}
+
+  <div class="alert alert-warning" role="alert">
+    Dataset Kosong!!
+  </div>
+
+  {% endif %}
+
+</div>
+<!-- /.container -->
+{% endblock %}

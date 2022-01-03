@@ -1,0 +1,9 @@
+{% extends "base.html" %}
+{% block title %}Error Loading Page..{% endblock %}
+{% block content %}
+<div class="container">
+  <h3 class="mt-5">Page Not Found</h3>
+  <p>Maaf laman yang anda cari tidak ditemukan...</p>
+  <a class="btn btn-primary" href="{{ url_for('index') }}">Kembali</a>
+</div>
+{% endblock %}

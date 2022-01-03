@@ -1,0 +1,9 @@
+{% extends "base.html" %}
+{% block title %}Error Loading Page..{% endblock %}
+{% block content %}
+<div class="container">
+  <h3 class="mt-5">Error terjadi kesalahan yang tidak terduga.</h3>
+  <p>Maaf untuk ketidaknyamanannya</p>
+  <a class="btn btn-primary" href="{{ url_for('index') }}">kembali</a>
+</div>
+{% endblock %}

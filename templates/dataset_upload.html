@@ -1,0 +1,34 @@
+  <!-- Navigation -->
+{% extends "base.html" %}
+{% block title %}Input Dataset{% endblock %}
+<!-- Page Content -->
+{% block content %}
+<div class="container">
+
+  {% include "menu_dataset.html" %}
+
+  <div id="content">
+    <form method="post" action="{{ url_for('input_dataset') }}" enctype="multipart/form-data" class="form-container">
+      <input type="hidden" name="csrf_token" value="{{ csrf_token() }}"/>
+      <div class="form-group">
+        <label>Upload Document (format Dokumen .xlsx)</label>
+      </div>
+      <div class="form-group">
+        <input type="file" name="document" class="form-control-file">
+      </div>
+      {% for error in form.document.errors %}
+      <div class="alert alert-danger" role="alert">{{ error }}</div>
+      {% endfor %}
+      <div class="form-group">
+        <button class="btn btn-primary" type="submit" name="submit" value="Upload" onclick="spinner();">Submit</button>
+      </div>
+      <!-- <input type="submit"> -->
+      <!-- <p><input type="file" name="file"></p>
+        <p><input type="submit" value="Submit"></p> -->
+      </form>
+  </div>
+  <div class="msg">{{ msg }}</div>
+</div>
+
+<!-- /.container -->
+{% endblock %}

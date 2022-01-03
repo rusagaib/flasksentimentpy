@@ -1,0 +1,95 @@
+<!-- Navigation -->
+{% extends "base.html" %}
+{% block title %}History{% endblock %}
+<!-- Page Content -->
+{% block content %}
+<div class="container">
+
+  <div class="card card-body mt-5" style="margin-bottom: 10px;">
+    <h3 class="text-center">ANALISIS SENTIMEN PENGGUNA LAYANAN PROVIDER SELULER DI MASA PANDEMI PADA MEDIA SOSIAL TWITTER MENGGUNAKAN METODE NAÏVE BAYES</h3>
+  </div>
+
+
+  {% if msg != False %}
+  <div class="clear-history" style="margin-bottom: 10px;">
+    <form class="form-hapus" method="POST" action="{{ url_for('clear_loghistory') }}">
+      <input type="hidden" name="csrf_token" value="{{ csrf_token() }}"/>
+      <button class="btn btn-danger" name="clearallhistory" type="submit" value="Submit" onclick="spinner();">Clear History</button>
+    </form>
+  </div>
+  <div class="table caption-top table-bordered table-responsive-md" cellspacing="0" width="100%" style="height: 400px; overflow-y: auto; overflow-x: auto;">
+    <caption>Riwayat Testing:</caption>
+    <table class="history table" border="1">
+      <thead>
+        <tr style="text-align: right;">
+          <th>ID</th>
+          <th>Tanggal</th>
+          <th>Sentimen</th>
+          <th>Label Hasil</th>
+          <th>Validasi Hasil</th>
+          <th>Update</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for x in datahistory %}
+        <tr>
+          <!-- <form class="form-inline" method="POST" action="/history/edit"> -->
+          <form class="form-edit" method="POST" action="{{ url_for('edit_histori') }}">
+          <input type="hidden" name="csrf_token" value="{{ csrf_token() }}"/>
+          <input value = "{{ x.id }}" type="hidden" name="my_id">
+          <th>{{ x.id|safe }}</th>
+          <th>{{ x.datetime.strftime('%Y-%m-%d')|safe }}</th>
+          <th>{{ x.sentimen|safe }}</th>
+          <th>{{ x.hasil_sentimen|safe }}</th>
+          <!-- <th>{{ x.validasi_sentimen|safe }}</th> -->
+
+
+          {% if x.validasi_sentimen == '1' %}
+          <th>
+            <select class="form-select" aria-label="Default select example" name="option" width="300px">
+              <option selected value="True">True</option>
+              <option value="False">False</option>
+            </select>
+          </th>
+
+          {% elif x.validasi_sentimen == '0' %}
+          <th>
+            <select class="form-select" aria-label="Default select example" name="option" width="300px">
+              <option selected value="False">False</option>
+              <option value="True">True</option>
+            </select>
+          </th>
+
+          {% else %}
+          <th>
+            <select class="form-select" aria-label="Default select example" name="option" width="300px">
+              <option selected>Validasi..</option>
+              <option value="False">False</option>
+              <option value="True">True</option>
+            </select>
+          </th>
+
+          {% endif %}
+          <!-- edit validasi_hasil -->
+          <th>
+            <button class="btn btn-outline-warning" type="submit" value="Submit">
+              Edit
+            </button>
+          </th>
+          </form>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </div>
+
+  {% else %}
+
+  <div class="alert alert-warning" role="alert">
+    Data History Kosong!!
+  </div>
+
+  {% endif %}
+
+</div>
+<!-- /.container -->
+{% endblock %}

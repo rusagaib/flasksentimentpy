@@ -1,0 +1,32 @@
+<!-- Navigation -->
+{% extends "base.html" %}
+{% block title %}Kamus Data{% endblock %}
+<!-- Page Content -->
+{% block content %}
+<div class="container">
+  {% include "menu_dataset.html" %}
+  {% if msg %}
+  <div class="table caption-top table-striped table-bordered table-responsive-md" cellspacing="0" width="100%" style="height: 400px; overflow-y: auto; overflow-x: auto;">
+    <caption>Kamus Data</caption>
+      {{ df_kamusdata|safe }}
+  </div>
+  <br>
+  <div class="table caption-top table-striped table-bordered table-responsive-md" cellspacing="0" width="100%" style="height: 400px; overflow-y: auto; overflow-x: auto;">
+    <caption>Kamus Positif</caption>
+      {{ df_kamusdata_pos|safe }}
+  </div>
+  <div class="table caption-top table-striped table-bordered table-responsive-md" cellspacing="0" width="100%" style="height: 400px; overflow-y: auto; overflow-x: auto;">
+    <caption>Kamus Negatif</caption>
+      {{ df_kamusdata_neg|safe }}
+  </div>
+
+  {% else %}
+
+  <div class="alert alert-warning" role="alert">
+    Kamus Data Kosong!!
+  </div>
+
+  {% endif %}
+</div>
+<!-- /.container -->
+{% endblock %}

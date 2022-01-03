@@ -1,0 +1,62 @@
+<!-- Navigation -->
+{% extends "base.html" %}
+{% block title %}Hasil Uji{% endblock %}
+<!-- Page Content -->
+{% block content %}
+<div class="container" id="media-content">
+
+  {% include "menu_dataset.html" %}
+
+  {% if msg %}
+
+    <br>
+    <h5 class="text-center">Diagram Batang DF Kamus Data</h5>
+    <div id="barchart" class="chart"></div>
+    <br>
+    <h5 class="text-center">Diagram Lingkaran Seluruh Dataset (Train & Testing)</h5>
+    <div id="piechart" class="chart"></div>
+    <br>
+
+    <div class="table caption-top table-striped table-bordered table-responsive-md" cellspacing="0" width="100%" style="height: 400px; overflow-y: auto; overflow-x: auto;">
+      <caption>Hasil Testing</caption>
+        {{ show|safe }}
+    </div>
+    <div class="table caption-top table-striped table-bordered table-responsive-md" cellspacing="0" width="100%" style="overflow-y: auto; overflow-x: auto;">
+      <caption>Confusion Matrik</caption>
+        {{ confusion_matrix|safe }}
+    </div>
+    <h3 class="mt-5">Hasil Akurasi: {{ akurasi|safe }} %</h3>
+    <br>
+    <div id="wordcloud" class="col-lg-12">
+      <h3 class="text-center">Word Cloud Kamus Data Positif</h3>
+      <img class="img-responsive center-block d-block mx-auto" alt="Responsive image" src="data:image/jpeg;base64,{{ img_data_pos }}" alt="img_data"  id="imgslot"/>
+    </div>
+    <br>
+    <div id="wordcloud2" class="col-lg-12">
+      <h3 class="text-center">Word Cloud Kamus Data Negatif</h3>
+      <img class="img-responsive center-block d-block mx-auto" alt="Responsive image" src="data:image/jpeg;base64,{{ img_data_neg }}" alt="img_data"  id="imgslot"/>
+    </div>
+
+  {% else %}
+
+  <div class="alert alert-warning" role="alert">
+    Dataset Kosong!!
+  </div>
+
+  {% endif %}
+
+</div>
+
+{% block script %}
+<script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+<script type="text/javascript">
+  // var graphs = {{graphJSON | safe}};
+  var piegraph = {{pieJSON | safe}};
+  var bargraph = {{barJSON | safe}};
+  // Plotly.plot('chart',graphs,{});
+  Plotly.plot('barchart',bargraph,{});
+  Plotly.plot('piechart',piegraph,{});
+</script>
+{% endblock %}
+<!-- /.container -->
+{% endblock %}
